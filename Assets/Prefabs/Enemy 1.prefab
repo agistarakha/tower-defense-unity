@@ -43,6 +43,11 @@ PrefabInstance:
       propertyPath: _healthFill
       value: 
       objectReference: {fileID: 5985408069523680461}
+    - target: {fileID: 8629732018374486610, guid: 5fe016138a0f5214c87fe2083a356f61,
+        type: 3}
+      propertyPath: _moveSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4392090240624662064, guid: 5fe016138a0f5214c87fe2083a356f61,
         type: 3}
       propertyPath: m_LocalPosition.x

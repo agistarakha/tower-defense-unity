@@ -26,6 +26,8 @@ public class TowerUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragH
         _towerIcon.sprite = tower.GetTowerHeadIcon();
     }
 
+
+
     public void OnBeginDrag(PointerEventData eventData)
     {
         GameObject newTowerObj = Instantiate(_towerPrefab.gameObject);
@@ -53,7 +55,7 @@ public class TowerUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragH
         {
             _currentSpawnedTower.LockPlacement();
             _currentSpawnedTower.ToggleOrderInLayer(false);
-            LevelManager.Instance.RegisterSpawnedTower(_currentSpawnedTower);
+            LevelManager.Instance.RegisterSpawnedTower(_currentSpawnedTower, _currentSpawnedTower.GetTowerPlacement());
             _currentSpawnedTower = null;
         }
     }

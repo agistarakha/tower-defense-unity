@@ -27,6 +27,7 @@ public class TowerPlacement : MonoBehaviour
         if (tower != null)
         {
             tower.SetPlacePosition(transform.position);
+            tower.SetTowerPlacement(this);
             _placedTower = tower;
         }
     }

@@ -40,7 +40,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private Text _livesInfo;
     [SerializeField] private Text _totalEnemyInfo;
 
-    private List<Tower> _spawnedTowers = new List<Tower>();
+    private Dictionary<TowerPlacement, Tower> _spawnedTowers = new Dictionary<TowerPlacement, Tower>();
     private List<Enemy> _spawnedEnemies = new List<Enemy>();
     private List<Bullet> _spawnedBullets = new List<Bullet>();
 
@@ -100,7 +100,7 @@ public class LevelManager : MonoBehaviour
                 enemy.MoveToTarget();
             }
         }
-        foreach (Tower tower in _spawnedTowers)
+        foreach (Tower tower in _spawnedTowers.Values)
         {
             tower.CheckNearestEnemy(_spawnedEnemies);
             tower.SeekTarget();
@@ -119,9 +119,17 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public void RegisterSpawnedTower(Tower tower)
+    public void RegisterSpawnedTower(Tower tower, TowerPlacement towerPlacement)
     {
-        _spawnedTowers.Add(tower);
+        if (_spawnedTowers.ContainsKey(towerPlacement))
+        {
+            Destroy(_spawnedTowers[towerPlacement].gameObject);
+            _spawnedTowers[towerPlacement] = tower;
+        }
+        else
+        {
+            _spawnedTowers.Add(towerPlacement, tower);
+        }
     }
 
     private void SpawnEnemy()

@@ -19,6 +19,8 @@ public class Tower : MonoBehaviour
     private float _runningShootDelay;
     private Enemy _targetEnemy;
     private Quaternion _targetRotation;
+    private TowerPlacement _towerPlacement;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +36,15 @@ public class Tower : MonoBehaviour
     public Sprite GetTowerHeadIcon()
     {
         return _towerHead.sprite;
+    }
+
+    public void SetTowerPlacement(TowerPlacement towerPlacement)
+    {
+        _towerPlacement = towerPlacement;
+    }
+    public TowerPlacement GetTowerPlacement()
+    {
+        return _towerPlacement;
     }
 
     public void SetPlacePosition(Vector2? newPosition)
